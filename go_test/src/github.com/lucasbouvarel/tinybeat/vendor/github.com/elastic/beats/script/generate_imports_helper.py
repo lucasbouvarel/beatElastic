@@ -1,1 +1,1 @@
-/tmp/project/go_test/src/github.com/lucasbouvarel/tinybeat/vendor/github.com/elastic/beats/metricbeat/scripts/generate_imports_helper.py
+/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat/vendor/github.com/elastic/beats/metricbeat/scripts/generate_imports_helper.py

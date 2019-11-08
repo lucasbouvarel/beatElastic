@@ -58,7 +58,6 @@ func (bt *tinybeat) Run(b *beat.Beat) error {
 				"counter": counter,
 			},
 		}
-		logp.Info("Beat evvent")
 		bt.client.Publish(event)
 		logp.Info("Event sent")
 		counter++
