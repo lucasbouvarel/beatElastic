@@ -21,7 +21,7 @@ func init() {
 	devtools.SetBuildVariableSources(devtools.DefaultBeatBuildVariableSources)
 
 	devtools.BeatDescription = "One sentence description of the Beat."
-	devtools.BeatVendor = "Lucas Bouvarel"
+	devtools.BeatVendor = "Lucas B"
 }
 
 // VendorUpdate updates elastic/beats in the vendor dir

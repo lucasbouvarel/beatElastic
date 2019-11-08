@@ -1,5 +1,5 @@
 tinybeat
-Copyright {year} Lucas Bouvarel
+Copyright {year} Lucas B
 
 This product includes software developed by The Apache Software
 Foundation (http://www.apache.org/).
