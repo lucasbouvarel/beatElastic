@@ -50,7 +50,7 @@ func (bt *tinybeat) Run(b *beat.Beat) error {
 			return nil
 		case <-ticker.C:
 		}
-
+		// APPELER SCRIPT JS
 		event := beat.Event{
 			Timestamp: time.Now(),
 			Fields: common.MapStr{
