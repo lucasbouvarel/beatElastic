@@ -3,6 +3,8 @@ package beater
 import (
 	"fmt"
 	"time"
+	"os"
+	// "encoding/json"
 
 	"github.com/elastic/beats/libbeat/beat"
 	"github.com/elastic/beats/libbeat/common"
@@ -10,6 +12,14 @@ import (
 
 	"github.com/lucasbouvarel/tinybeat/config"
 )
+
+type Statuses struct {
+	Users []Status `json:"users"`
+}
+
+type Status struct {
+	Created_at string `json:"name"`
+}
 
 // tinybeat configuration.
 type tinybeat struct {
@@ -51,10 +61,21 @@ func (bt *tinybeat) Run(b *beat.Beat) error {
 		case <-ticker.C:
 		}
 		// APPELER SCRIPT JS
+		// Open our jsonFile
+		jsonFile, err := os.Open("response.json")
+		// if we os.Open returns an error then handle it
+		if err != nil {
+		    fmt.Println(err)
+		}
+		fmt.Println("Successfully Opened users.json")
+		fmt.Println(jsonFile)
+		// defer the closing of our jsonFile so that we can parse it later on
+		defer jsonFile.Close()
 		event := beat.Event{
 			Timestamp: time.Now(),
 			Fields: common.MapStr{
 				"type":    b.Info.Name,
+				"users": [5]string{"lucasbouvarel","donaldtrump","twitterprogrammer","pierreleripoll","flesueurlol"},
 				"counter": counter,
 			},
 		}

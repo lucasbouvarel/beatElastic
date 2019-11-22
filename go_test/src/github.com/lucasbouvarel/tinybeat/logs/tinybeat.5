@@ -1,0 +1,34 @@
+2019-11-12T09:12:42.728+0100	INFO	instance/beat.go:637	Home path: [/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat] Config path: [/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat] Data path: [/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat/data] Logs path: [/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat/logs]
+2019-11-12T09:12:42.760+0100	INFO	instance/beat.go:645	Beat ID: 2c5b1428-a304-4a9c-9f51-f131d6dc4a89
+2019-11-12T09:12:45.158+0100	INFO	[seccomp]	seccomp/seccomp.go:124	Syscall filter successfully installed
+2019-11-12T09:12:45.158+0100	INFO	[beat]	instance/beat.go:933	Beat info	{"system_info": {"beat": {"path": {"config": "/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat", "data": "/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat/data", "home": "/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat", "logs": "/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat/logs"}, "type": "tinybeat", "uuid": "2c5b1428-a304-4a9c-9f51-f131d6dc4a89"}}}
+2019-11-12T09:12:45.158+0100	INFO	[beat]	instance/beat.go:942	Build info	{"system_info": {"build": {"commit": "HEAD", "libbeat": "8.0.0", "time": "2019-11-08T09:31:23.000Z", "version": "8.0.0"}}}
+2019-11-12T09:12:45.158+0100	INFO	[beat]	instance/beat.go:945	Go runtime info	{"system_info": {"go": {"os":"linux","arch":"amd64","max_procs":8,"version":"go1.13"}}}
+2019-11-12T09:12:45.158+0100	INFO	[beat]	instance/beat.go:949	Host info	{"system_info": {"host": {"architecture":"x86_64","boot_time":"2019-10-18T12:27:12+02:00","containerized":false,"name":"tc405-112-07","ip":["127.0.0.1/8","134.214.202.32/23","172.17.0.1/16"],"kernel_version":"4.12.14-lp150.12.76-default","mac":["18:66:da:08:47:57","02:42:28:86:df:2b","ee:cd:ea:39:3d:e0"],"os":{"family":"","platform":"opensuse-leap","name":"openSUSE Leap","version":"15.0","major":15,"minor":0,"patch":0},"timezone":"CET","timezone_offset_sec":3600,"id":"869d8cef481a493c8edc0fd7812583b7"}}}
+2019-11-12T09:12:45.159+0100	INFO	[beat]	instance/beat.go:978	Process info	{"system_info": {"process": {"capabilities": {"inheritable":null,"permitted":null,"effective":null,"bounding":["chown","dac_override","dac_read_search","fowner","fsetid","kill","setgid","setuid","setpcap","linux_immutable","net_bind_service","net_broadcast","net_admin","net_raw","ipc_lock","ipc_owner","sys_module","sys_rawio","sys_chroot","sys_ptrace","sys_pacct","sys_admin","sys_boot","sys_nice","sys_resource","sys_time","sys_tty_config","mknod","lease","audit_write","audit_control","setfcap","mac_override","mac_admin","syslog","wake_alarm","block_suspend","audit_read"],"ambient":null}, "cwd": "/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat", "exe": "/tmp/beatElastic/go_test/src/github.com/lucasbouvarel/tinybeat/tinybeat", "name": "tinybeat", "pid": 4453, "ppid": 4385, "seccomp": {"mode":"filter","no_new_privs":true}, "start_time": "2019-11-12T09:12:42.009+0100"}}}
+2019-11-12T09:12:45.159+0100	INFO	instance/beat.go:297	Setup Beat: tinybeat; Version: 8.0.0
+2019-11-12T09:12:45.159+0100	INFO	[index-management]	idxmgmt/std.go:182	Set output.elasticsearch.index to 'tinybeat-8.0.0' as ILM is enabled.
+2019-11-12T09:12:45.159+0100	INFO	elasticsearch/client.go:173	Elasticsearch url: http://localhost:9200
+2019-11-12T09:12:45.159+0100	INFO	[publisher]	pipeline/module.go:97	Beat name: tc405-112-07
+2019-11-12T09:12:45.159+0100	INFO	[monitoring]	log/log.go:118	Starting metrics logging every 30s
+2019-11-12T09:12:45.159+0100	INFO	instance/beat.go:456	tinybeat start running.
+2019-11-12T09:12:45.159+0100	INFO	beater/tinyBeat.go:37	tinybeat is running! Hit CTRL-C to stop it.
+2019-11-12T09:12:45.764+0100	INFO	add_cloud_metadata/add_cloud_metadata.go:89	add_cloud_metadata: hosting provider type not detected.
+2019-11-12T09:12:46.159+0100	INFO	beater/tinyBeat.go:62	Event sent
+2019-11-12T09:12:47.159+0100	INFO	beater/tinyBeat.go:62	Event sent
+2019-11-12T09:12:47.175+0100	INFO	pipeline/output.go:95	Connecting to backoff(elasticsearch(http://localhost:9200))
+2019-11-12T09:12:48.159+0100	INFO	beater/tinyBeat.go:62	Event sent
+2019-11-12T09:12:48.542+0100	ERROR	pipeline/output.go:100	Failed to connect to backoff(elasticsearch(http://localhost:9200)): Get http://localhost:9200: dial tcp [::1]:9200: connect: cannot assign requested address
+2019-11-12T09:12:48.542+0100	INFO	pipeline/output.go:93	Attempting to reconnect to backoff(elasticsearch(http://localhost:9200)) with 1 reconnect attempt(s)
+2019-11-12T09:12:49.159+0100	INFO	beater/tinyBeat.go:62	Event sent
+2019-11-12T09:12:50.159+0100	INFO	beater/tinyBeat.go:62	Event sent
+2019-11-12T09:12:51.159+0100	INFO	beater/tinyBeat.go:62	Event sent
+2019-11-12T09:12:51.637+0100	ERROR	pipeline/output.go:100	Failed to connect to backoff(elasticsearch(http://localhost:9200)): Get http://localhost:9200: dial tcp [::1]:9200: connect: cannot assign requested address
+2019-11-12T09:12:51.638+0100	INFO	pipeline/output.go:93	Attempting to reconnect to backoff(elasticsearch(http://localhost:9200)) with 2 reconnect attempt(s)
+2019-11-12T09:12:52.159+0100	INFO	beater/tinyBeat.go:62	Event sent
+2019-11-12T09:12:53.160+0100	INFO	beater/tinyBeat.go:62	Event sent
+2019-11-12T09:12:54.159+0100	INFO	beater/tinyBeat.go:62	Event sent
+2019-11-12T09:12:54.622+0100	INFO	[monitoring]	log/log.go:153	Total non-zero metrics	{"monitoring": {"metrics": {"beat":{"cpu":{"system":{"ticks":60,"time":{"ms":63}},"total":{"ticks":150,"time":{"ms":155},"value":150},"user":{"ticks":90,"time":{"ms":92}}},"handles":{"limit":{"hard":65536,"soft":65536},"open":9},"info":{"ephemeral_id":"2056bb7e-2c68-4b0c-9e3b-501f0ef75a3d","uptime":{"ms":12122}},"memstats":{"gc_next":5231472,"memory_alloc":2855168,"memory_total":6166880,"rss":33116160},"runtime":{"goroutines":14}},"libbeat":{"config":{"module":{"running":0}},"output":{"type":"elasticsearch"},"pipeline":{"clients":0,"events":{"active":9,"published":9,"retry":4,"total":9}}},"system":{"cpu":{"cores":8},"load":{"1":0.23,"15":0.55,"5":0.43,"norm":{"1":0.0288,"15":0.0688,"5":0.0538}}}}}}
+2019-11-12T09:12:54.622+0100	INFO	[monitoring]	log/log.go:154	Uptime: 12.123382392s
+2019-11-12T09:12:54.622+0100	INFO	[monitoring]	log/log.go:131	Stopping metrics logging.
+2019-11-12T09:12:54.622+0100	INFO	instance/beat.go:462	tinybeat stopped.
