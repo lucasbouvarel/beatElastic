@@ -47,7 +47,7 @@ var makeRequest = (url, bearer, parameters) => {
   })
 }
 var writeResponse = (text, name_file) => {
-  fs.writeFile("/tmp/"+name_file, text, (err) =>{
+  fs.writeFile(name_file, text, (err) =>{
     if(err){
       console.log("Something occured : ",err)
     }
@@ -59,12 +59,15 @@ var writeResponse = (text, name_file) => {
 authenticate()
 .then(token => {
   console.log("I am authenticated : ", token)
-  url='https://api.twitter.com/1.1/search/tweets.json?q=from%3Atwitterdev&result_type=mixed&count=2'
+  url='https://api.twitter.com/1.1/search/tweets.json?q=from%3Abouvbigo&result_type=popular&count=100'
+  //url='https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=realDonaldTrump'
+  //url='https://api.twitter.com/1.1/search/tweets.json?q=geocode=38,8976,-77,0365,10mi&result_type=mixed'
   makeRequest(url, token)
   .then(body => {
-    var texts = JSON.parse(body).statuses.map(stat => stat.text)
+    var texts = JSON.parse(body)//.statuses.map(stat => stat.text)
     console.log("Here is the response : \n", texts)
     writeResponse(JSON.stringify(texts), "response.json")
+    console.log("")
   })
   .catch(err => {
     console.log("Bad response : ", err)
