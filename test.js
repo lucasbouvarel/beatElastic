@@ -59,9 +59,12 @@ var writeResponse = (text, name_file) => {
 authenticate()
 .then(token => {
   console.log("I am authenticated : ", token)
-  url='https://api.twitter.com/1.1/search/tweets.json?q=from%3Abouvbigo&result_type=popular&count=100'
+  //url='https://api.twitter.com/1.1/search/tweets.json?q=from%3Abouvbigo&result_type=popular&count=100'
   //url='https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=realDonaldTrump'
-  //url='https://api.twitter.com/1.1/search/tweets.json?q=geocode=38,8976,-77,0365,10mi&result_type=mixed'
+  //url='https://api.twitter.com/1.1/search/tweets.json?q=geocode=38,8976,-77,0365,10km' // celle ci marche pas je sais pas pq
+  //url='https://api.twitter.com/1.1/search/tweets.json?q=screen_name=bouvbigo'
+  url='https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=bouvbigo&count=200' // celle ci marche
+  //url='https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=realDonaldTrump&count=200' celle ci retourne qu'un seul tweet ????
   makeRequest(url, token)
   .then(body => {
     var texts = JSON.parse(body)//.statuses.map(stat => stat.text)
