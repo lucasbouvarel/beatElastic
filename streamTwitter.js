@@ -1,5 +1,39 @@
 var request = require('./node_modules/request-promise');
 var fs = require("fs")
+
+
+function streamConnect(token) {
+  // Listen to the stream
+  const config = {
+    url: 'https://api.twitter.com/labs/1/tweets/stream/sample?format=compact&expansions=author_id,geo.place_id',
+    auth: {
+      bearer: token,
+    },
+    headers: {
+      'User-Agent': 'TwitterDevSampledStreamQuickStartJS',
+    },
+    timeout: 2000,
+  };
+
+  const stream = request.get(config);
+
+  stream.on('data', data => {
+    try {
+      const json = JSON.parse(data);
+      console.log(json);
+      console.log(json.includes.users)
+    } catch (e) {
+      // Keep alive signal received. Do nothing.
+    }
+  }).on('error', error => {
+    if (error.code === 'ETIMEDOUT') {
+      stream.emit('timeout');
+    }
+  });
+
+  return stream;
+}
+
 var authenticate = () => {
   var options = {
     method : "POST",
@@ -66,8 +100,8 @@ authenticate()
 //  url='https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=bouvbigo&count=200' // celle ci marche
   //url='https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=realDonaldTrump&count=200' //celle ci retourne qu'un seul tweet ????
 //url="https://api.twitter.com/1.1/search/tweets.json?q=#starwars"
-  makeRequest(url, token)
-  .then(body => {
+  streamConnect(token)
+  /*.then(body => {
     var texts = JSON.parse(body)//.statuses.map(stat => stat.text)
     console.log("Here is the response : \n", texts)
     writeResponse(JSON.stringify(texts), "response.json")
@@ -75,94 +109,8 @@ authenticate()
   })
   .catch(err => {
     console.log("Bad response : ", err)
-  })
+  })*/
 })
 .catch(err => {
   console.log("I am not connected... ", err)
 })
-
-
-function streamConnect(token) {
-  // Listen to the stream
-  const config = {
-    url: 'https://api.twitter.com/labs/1/tweets/stream/sample?format=compact',
-    auth: {
-      bearer: token,
-    },
-    headers: {
-      'User-Agent': 'TwitterDevSampledStreamQuickStartJS',
-    },
-    timeout: 20000,
-  };
-
-  const stream = request.get(config);
-
-  stream.on('data', data => {
-    try {
-      const json = JSON.parse(data);
-      console.log(json);
-    } catch (e) {
-      // Keep alive signal received. Do nothing.
-    }
-  }).on('error', error => {
-    if (error.code === 'ETIMEDOUT') {
-      stream.emit('timeout');
-    }
-  });
-
-  return stream;
-}
-
-/*
-var fs = require("fs")
-var writeResponse = (text, name_file) => {
-  fs.writeFile(name_file, text, (err) =>{
-    if(err){
-      console.log("Something occured : ",err)
-    }
-    console.log("The file was saved")
-  })
-}
-const googleTrends = require('google-trends-api');
-googleTrends.realTimeTrends({
-    geo: 'FR',
-    category: 'all',
-}, function(err, results) {
-    if (err) {
-       console.log(err);
-    } else {
-      console.log(results.length);
-      writeResponse(results, "response.json")
-    }
-});*/
-/*googleTrends.interestByRegion({keyword: 'Donald Trump', startTime: new Date('2017-02-01'), endTime: new Date('2017-02-06'), resolution: 'CITY'})
-.then((res) => {
-  console.log(res);
-  writeResponse(res, "response.json")
-})
-.catch((err) => {
-  console.log(err);
-})
-*/
-var unirest = require("unirest");
-
-var req = unirest("GET", "https://jgentes-crime-data-v1.p.rapidapi.com/crime");
-
-req.query({
-	"startdate": "9%2F19%2F2015",
-	"enddate": "9%2F25%2F2015",
-	"lat": "37.757815",
-	"long": "-122.5076392"
-});
-
-req.headers({
-	"x-rapidapi-host": "jgentes-Crime-Data-v1.p.rapidapi.com",
-	"x-rapidapi-key": "b9be0efa47mshcc45fb6939251dbp19e0bbjsnf08f092073b6"
-});
-
-
-req.end(function (res) {
-	if (res.error) throw new Error(res.error);
-
-	console.log(res.body);
-});
